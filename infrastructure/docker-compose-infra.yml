@@ -1,0 +1,24 @@
+services:
+  postgres:
+    image: postgres:16.3-alpine
+    container_name: pg_container
+    environment:
+      POSTGRES_USER: ${PG_USERNAME}
+      POSTGRES_PASSWORD: ${PG_PASSWORD}
+      POSTGRES_DB: ${PG_DB_NAME}
+      PGDATA: /data/postgres
+    volumes:
+      - ../.docker/pg-data:/data/postgres
+    ports:
+      - "${PG_PORT}:5432"
+    networks:
+      - localnet
+    restart: unless-stopped
+
+networks:
+  localnet:
+    driver: bridge
+
+volumes:
+  pg_data:
+    driver: local

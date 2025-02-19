@@ -1,0 +1,9 @@
+services:
+  flyway:
+    image: redgate/flyway
+    container_name: flyway_container
+    volumes:
+      - ../db/migration:/flyway/migration
+      - ../db/flyway_conf/flyway.conf:/flyway/conf/flyway.conf
+    network_mode: host
+    restart: unless-stopped
