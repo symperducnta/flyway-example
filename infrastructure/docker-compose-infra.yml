@@ -16,7 +16,7 @@ services:
 
 networks:
   localnet:
-    driver: bridge`
+    driver: bridge
 
 volumes:
   pg_data:
